@@ -1,0 +1,38 @@
+{% extends "header.html" %}
+{% load staticfiles %}
+
+{% block page %}
+<div class ="descript">
+
+	<p> intro paragraph giving some details about it</p>
+</div>
+<br/>
+{% if blog_list %}
+{% for b in blog_list%}
+<div class ="blog-item">
+<p class="title">{{b.title}}</p>
+<p class="descrip">{{b.descript}}</p>
+<p style="font-size:10px; padding:0; margin:0;">{{b.pub_date}}</p>
+<p>{{b.content}}</p>
+</div>
+{% endfor %}
+{% endif %}
+<!-- ^ ^ ^ Paginate above ^ ^ ^ -->
+<div class="pagination">
+    <span class="step-links">
+        {% if blog_list.has_previous %}
+            <a href="?page={{ blog_list.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ blog_list.number }} of {{ blog_list.paginator.num_pages }}
+        </span>
+
+        {% if blog_list.has_next %}
+            <a href="?page={{ blog_list.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>WILLIAM WIDMER</title>
+
+   <!--{ {% load staticfiles %} -->
+
+    <!-- <link rel="stylesheet" href="{% static "" %}" type="text/css" />-->
+    <!-- <script type="text/javascript" href ="{% static "" %}"> </script>-->
+
+<style>
+*{
+  font-family:Helvetica, sans-serif, serif;
+}
+.header-wrap{
+	height:100px;
+}
+.header{
+	width:90%;
+	margin-top:20px;
+	margin-left: auto;
+	margin-right:auto;
+}
+a, li, ul li{
+	text-decoration: none;
+	list-style-type: none;
+}
+.nav{
+margin-top:20px;
+}
+.navbar a{
+float:left;
+padding-right:40px;
+color:#777;
+}
+.navbar a:hover{
+	background-color: #EEE;
+}
+body{
+	margin:0;
+	width:100%;
+}
+.active{
+	background-color: #EEE;
+}
+.row{
+border-top:1px solid #777;
+}
+.loc{
+float:left;
+border-top:3px solid #777;
+
+background-color: #EEE;
+width:100%;
+}
+
+.content{
+	width:90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.logo{
+  font-size:20px;
+}
+
+.title{
+  font-size:36px;
+  font-weight:600;
+  margin:0;
+  padding:0;
+}
+.descrip{
+  font-size:20px;
+  margin:0;
+  padding:0;
+
+}
+
+
+</style>
+
+</head>
+<body>
+
+	<div class="header-wrap">
+		<div class="header">
+			<div class="logo">
+				<span>William Widmer</span>
+			<div class="row">
+				<span> Computer Science</span>
+			</div>
+			</div>
+
+			<div class="nav">
+				<div class="navbar">
+					{% for page in menu_list %}
+					<a href="/{{page.title.lower}}">{{page.title}}</a>
+					{% endfor %}
+				</div>
+				<div class="loc">
+					/ <!-- model view. breadcrumb/to/page-->
+<!-- eg: wwwidmer.com/portfolio/school/OS or blog/articleName or blog/archive/2014 etc etc etc -->
+				</div>
+			</div>
+
+		</div> <!-- header -->
+	</div> <!-- header wrap-->
+<div class="content-wrap">
+	<div class="content">
+	{% block page %}
+
+
+  	{% endblock %}
+  </div>
+</div>
+
+
+</body>

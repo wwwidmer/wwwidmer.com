@@ -1,0 +1,44 @@
+{% extends "header.html" %}
+{% load staticfiles %}
+
+{% block page %}
+<div class="page-view">
+
+{% if pages %}
+{% for p in pages %}
+
+<h1>{{ p.title }}</h1>
+<h2>{{ p.descript }}</h2>
+<p>{{ p.content }}</p>
+
+{% endfor %}
+{% endif%}
+
+{% if port %}
+{% for p in port %}
+
+<h1>{{p.title}}</h1>
+
+<p>{{p.content}}</p>
+
+{% if p.url %}
+<p>This can be seen at:<a href="http://{{p.url}}"> {{p.url}} </a> </p>
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if port_view %}
+<p> For other coding projects see my <a href="http://www.github.com/wwwidmer"> Github </a></p>
+{% for p in port_view %}
+  <div class="col-md-2">
+		<h2><a href="/portfolio/{{p.id}}/">{{p.title}}</a></h2>
+		<img src="{{p.introImage}}" height=300px width=400px/>
+		<p>{{p.short}}</p>
+		<br/>
+  </div>
+
+{% endfor %}
+{% endif %}
+
+</div>
+{% endblock %}

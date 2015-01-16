@@ -1,0 +1,24 @@
+{% extends "header.html" %}
+{% load staticfiles %}
+
+{% block page %}
+<div class ="container" style="width:90%;">
+	<div class="col-md-2">
+		<p> My name is William Widmer and I am a software developer and aspiring computer scientist currently in New York City.
+		</p>
+		<p>
+			I am currently finishing my undergraduate degree in Computer Science at The City University of New York Hunter College.
+		</p>
+		I have experience with multiple web frameworks, languages, and designing applications solo and within a team.
+			I am currently working with C# .NET for the Human Resource Administration for the City of New York where my applications are used by many social workers to administer hundreds of clients.
+		</p>
+		<p>My research interests are: </p>
+		<p>My work interests are: Software Developing, Open Source and Free Software projects.</p>
+		
+	</div>
+	<div class="col-md-2">
+		<img src="http://i.imgur.com/jop7vwt.jpg" title="Untitled, Nathaniel Matthews 2013" width=90%/>
+	</div>
+</div>
+
+{% endblock %}

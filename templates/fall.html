@@ -1,0 +1,99 @@
+<html>
+<head>
+<title> AUTUMN HAAC </title>
+<meta ="some stupid hashtag shit"/>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<script type="text/javascript">
+
+jQuery(function($){
+var marquee = $('div.marquee');
+
+marquee.each(function() {
+    var mar = $(this),indent = mar.width();
+    mar.marquee = function() {
+        indent--;
+        mar.css('text-indent',indent);
+        if (indent < -1 * mar.children('div.marquee-text').width()) {
+            indent = mar.width();
+        }
+    };
+    mar.data('interval',setInterval(mar.marquee,500/60));
+});
+
+});
+</script>
+<script type="text/javascript">
+
+jQuery(function($){
+
+
+var stack = [];
+stack.push("red");    
+stack.push("white");       
+stack.push("green");   
+stack.push("blue");   
+
+
+$(document).ready(function(){
+
+window.setInterval(function(){
+
+var i = stack.shift();
+
+$("body").css("background-color", i);
+
+stack.push(i);
+
+}, 500);
+
+});
+
+
+});
+</script>
+</head>
+<body>
+<style> *{
+font-family:"Comic Sans MS", Comic Sans, cursive;
+} </style>
+<div class ="marquee">
+<div class ="marquee-text" style="font-size:20px;font-weight:bold;">HAPPY BIRTHDAY </div>
+<img src="http://i.imgur.com/u8I4fQ6.jpg" alt="fuck"/>
+</div>
+<p> I didn't buy you a card </p>
+<div> 
+<img src="http://i.imgur.com/OLiAzVH.gif" alt="dogewow" title="good enough as a card"/>
+</div>
+<div> 
+<img src="http://i.imgur.com/wTzAU.gif" alt="dogewow" title="you make feel like this???"/> 
+</div>
+
+<div>
+<img src="http://i.imgur.com/BEgBDh0.jpg" alt="fuck"/>
+</div>
+<p> I figured a few awful images will really drive home the point</p> 
+<div>
+<img src="http://i.imgur.com/5HuTkEB.jpg" alt="ben"/>
+</div>
+<p> Wait no thats not you </p>
+<div>
+<img src="http://i.imgur.com/XmvPldC.jpg" alt="fuck"/>
+</div>
+<p> We don't have any normal pictures together I'm ok with that</p>
+<div>
+<img src="http://i.imgur.com/FUvDFaA.jpg" alt="cat"/>
+</div>
+<p> Here's my cat with your underwear </p>
+<div>
+<p> I'M SO EXCITED TO BE DATING YOU I HOPE YOU DON'T HATE MY PRESENTS </p>
+<a href="http://art.yale.edu/"><p> HAPPY 22ND YOU CHILD </p></a>
+<div> <img src="http://i.imgur.com/rhS9bKg.gif" alt="cate"/>
+</div>
+<a href="http://art.yale.edu/"><div style="font-size:48px"> &hearts; TU ES GéNIAL &hearts; </div></a>
+</div>
+<div>
+<img src="http://i.imgur.com/Tr46jTH.gif" alt="jelloyolo"/>
+</div>
+</body>
+</html>
