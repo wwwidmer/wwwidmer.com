@@ -1,5 +1,5 @@
 from django.contrib import admin
-from wwidmer.models import page, blog, portfolio, project
+from wwwidmer.models import page, blog, portfolio, project, index_image
 
 # Register your models here.
 
@@ -12,11 +12,11 @@ class blogAdmin(admin.ModelAdmin):
 class portAdmin(admin.ModelAdmin):
 	list_display=('title','id')
 
-class projAdmin(admin.ModelAdmin):
-	list_display=('title','id')
+class imageAdmin(admin.ModelAdmin):
+    list_display = ('id','image')
 
 
 admin.site.register(page, pageAdmin)
 admin.site.register(blog, blogAdmin)
 admin.site.register(portfolio, portAdmin)
-admin.site.register(project,projAdmin)
+admin.site.register(index_image, imageAdmin)
