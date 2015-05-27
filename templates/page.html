@@ -1,44 +1,79 @@
 {% extends "header.html" %}
 {% load staticfiles %}
 
+
 {% block page %}
-<div class="page-view">
+    {%  autoescape on %}
 
-{% if pages %}
-{% for p in pages %}
-
-<h1>{{ p.title }}</h1>
-<h2>{{ p.descript }}</h2>
-<p>{{ p.content }}</p>
-
-{% endfor %}
-{% endif%}
-
-{% if port %}
-{% for p in port %}
-
-<h1>{{p.title}}</h1>
-
-<p>{{p.content}}</p>
-
-{% if p.url %}
-<p>This can be seen at:<a href="http://{{p.url}}"> {{p.url}} </a> </p>
-{% endif %}
-{% endfor %}
-{% endif %}
-
-{% if port_view %}
-<p> A more extensive look at my programming can be seen at: <a href="http://www.github.com/wwwidmer"> Github </a></p>
-{% for p in port_view %}
-  <div class="col-md-2">
-		<h2><a href="/portfolio/{{p.id}}/">{{p.title}}</a></h2>
-		<img src="{{p.introImage}}" height=300px width=400px/>
-		<p>{{p.short}}</p>
-		<br/>
-  </div>
-
-{% endfor %}
-{% endif %}
-
-</div>
+    <div class="row">
+        {% if pages %}
+            <div class="col-sm-8 blog-main">
+                {% for p in pages %}
+                    <div class="blog-post">
+                        <h2 class="blog-post-title">{{ p.title }}</h2>
+                        <h2 class="blog-post-meta">{{ p.descript}}</h2>
+                        <p>{{ p.content|safe }}</p>
+                    </div><!-- /.blog-post -->
+                {%  endfor %}
+            </div>
+            <div class="col-sm-3 col-sm-offset-1">
+                <div class="sidebar-module sidebar-module-inset">
+                    <p>
+                        <h3>
+                        View more on the <a href="/blog/">blog!</a>
+                        </h3>
+                    </p>
+                </div>
+                {% if full_blog_list.count > 0 %}
+                <div class="sidebar-module">
+                    <h4> More articles...</h4>
+                    <ol class="list-unstyled">
+                        {%  for b in full_blog_list %}
+                            <li> <a href="/{{ b.title }}">   {{ b.title }} </a> {{ b.pub_date.month }}.{{ b.pub_date.year}}</li>
+                        {% endfor %}
+                    </ol>
+                </div>
+                {% else %}
+            There doesn't appear to be anything here.
+                {%  endif %}
+            </div>
+            {% elif port %}
+            <div class="row">
+                {% for p in port %}
+                    <div class="col-lg-4">
+                        <h1>{{p.title}}</h1>
+                        <p>{{p.content}}</p>
+                        {% if p.url %}
+                            <p><a href="http://{{p.url}}"> {{p.title}} </a> </p>
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-4">
+                        <img class="portfolio-image" src=
+                            {%  if p.sideBar %}
+                                "{% static p.sideBar %}"
+                            {% else %}
+                                "{% static p.introImage %}"
+                            {%  endif %}
+                    alt="p.title" />
+                    </div>
+                {% endfor %}
+            </div>
+        {% elif port_view %}
+        <p> A more extensive look at my programming can be seen on <a href="http://www.github.com/wwwidmer"> Github </a>
+    and by taking a look at my resume <a href=""> on Google Drive</a>.</p>
+        <div class="row">
+            {% for p in port_view %}
+                <div class="col-md-4">
+                    <h2><a href="/portfolio/{{p.id}}/">{{p.title}}</a></h2>
+                    <a href="/portfolio/{{ p.id }}"><img src="{%  static p.introImage %}" alt ="{{ p.title }}" height=250px width=250px/></a>
+                    <p>{{p.short}}</p>
+                    <br/>
+                </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <h2> There doesn't appear to be anything here.</h2>
+    {% endif %}
+    </div>
+    {%  endautoescape %}
 {% endblock %}
