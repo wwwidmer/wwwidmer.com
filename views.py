@@ -47,14 +47,8 @@ def render_blog(request, b_id=0):
     return render_to_response('blog.html',context)
 
 def render_image():
-    minRange = min_index()
-    rand = random.randrange(minRange, index_image.objects.all().count()+minRange,1)
-    img = index_image.objects.filter(id=rand)
+    range = index_image.objects.all().count()
+    rand = random.randrange(0,range)
+    img = index_image.objects.all()[rand]
     return img
 
-def min_index():
-    min = 10000
-    for x in index_image.objects.all():
-        if x.id < min:
-            min = x.id
-    return min

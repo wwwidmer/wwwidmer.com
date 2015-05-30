@@ -20,9 +20,9 @@
     {%  endif %}
     {% if img %}
         <div class="col-md-5">
-            {% for i in img  %}
-                <img class="home-dex" src="{% static i.image %}" alt="{{ i.image }} " title="{{ i.text }}"/>
-            {%  endfor %}
+            {% if img  %}
+                <img class="home-dex" src="{% static img.image %}" alt="{{ img.image }} " title="{{ img.text }}"/>
+            {%  endif %}
         </div>
     {% else %}
         <p> You need index images.</p>
