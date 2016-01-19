@@ -51,4 +51,3 @@ def render_image():
     rand = random.randrange(0,range)
     img = index_image.objects.all()[rand]
     return img
-
