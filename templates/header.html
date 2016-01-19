@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>WILLIAM WIDMER</title>
+
+    {% load staticfiles %}
+
+    <link rel="stylesheet" href="{% static "all/bootstrap.min.css" %}" type="text/css" />
+    <link rel="stylesheet" href="{% static "all/style.css" %}" type="text/css" />
+    <script type="text/javascript" href ="{% static "all/jquery.js" %}"> </script>
+
+</head>
+<body>
+<div class="blog-masthead">
+    <nav class="blog-nav">
+        <div class = "head">
+            <a href="/">William Widmer
+            <p class="subhead"> Computer Science, Software Development</p>
+            </a>
+        </div>
+        {% for page in menu_list %}
+            <a class ="blog-nav-item" href="/{{ page.title.lower }}">{{page.title}}</a>
+        {% endfor %}
+        {%  if has_blog_list %}
+            <a class="blog-nav-item" href ="/blog"> Blog </a>
+        {%  endif %}
+        {%  if has_portfolio_list %}
+            <a class="blog-nav-item" href ="/portfolio/"> Portfolio </a>
+        {%  endif %}
+    </nav>
+</div>
+<div class="loc">
+    <!-- model view. breadcrumb/to/page-->
+    <!-- eg: wwwidmer.com/portfolio/school/OS or blog/articleName or blog/archive/2014 etc etc etc -->
+</div>
+
+<div class="container">
+    <div class="content">
+        {% block page %}
+        {% endblock %}
+    </div>
+</div>
+
+<footer class="blog-footer">
+    <p>2015 | William Widmer | Website made in NYC | All content by William Widmer unless noted</p>
+</footer>
+
+</body>

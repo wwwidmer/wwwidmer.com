@@ -1,0 +1,33 @@
+{% extends "header.html" %}
+{% load staticfiles %}
+
+{% block page %}
+<div class ="container" style="width:90%; margin:10px;">
+
+    {%  if main %}
+        <div class="col-md-4">
+            {%  for m in main %}
+                <p>
+                    {{ m.descript }}
+                </p>
+                <p>
+                    {{ m.content|safe }}
+                </p>
+            {%  endfor %}
+            </div>
+    {%  else %}
+        <p> You need a main page set.</p>
+    {%  endif %}
+    {% if img %}
+        <div class="col-md-5">
+            {% if img  %}
+                <img class="home-dex" src="{% static img.image %}" alt="{{ img.image }} " title="{{ img.text }}"/>
+            {%  endif %}
+        </div>
+    {% else %}
+        <p> You need index images.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

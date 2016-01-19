@@ -1,0 +1,66 @@
+{% extends "header.html" %}
+{% load staticfiles %}
+
+{% block page %}
+{%  autoescape off %}
+    <h2>A curated list of thoughts..</h2>
+    <div class="row">
+    {% if blog_list %}
+        <div class="col-sm-8 blog-main">
+            {% for b in blog_list %}
+
+                    <div class="blog-post">
+                        <h2 class="blog-post-title">{{ b.title }}</h2>
+                        <p class="blog-post-meta">{{ b.pub_date }}</p>
+
+                            <p class=""> {{ b.content|safe|truncatewords:"100"|linebreaks }}</p>
+                        <a href="/{{ b.title }}">Read more...</a>
+
+                    </div><!-- /.blog-post -->
+
+            {%  endfor %}
+        </div>
+    {% endif %}
+        <div class="col-sm-3 col-sm-offset-1">
+            <div class="sidebar-module sidebar-module-inset">
+                <p>
+                    <em>
+                        Some information about me maybe some more ideas or some inspirational quote idk
+                    </em>
+                </p>
+            </div>
+        {% if full_blog_list.count > 0 %}
+                <div class="sidebar-module">
+                    <h4> More articles...</h4>
+                    <ol class="list-unstyled">
+                        {%  for b in full_blog_list %}
+                            <li> <a href="/{{ b.title }}">   {{ b.title }} </a> {{ b.pub_date.month }}.{{ b.pub_date.year}}</li>
+                        {% endfor %}
+                    </ol>
+                </div>
+        {% else %}
+            There doesn't appear to be anything here.
+        {%  endif %}
+        </div>
+    </div>
+
+
+    <!-- ^ ^ ^ Paginate above ^ ^ ^ -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if blog_list.has_previous %}
+                <a href="?page={{ blog_list.previous_page_number }}"> < </a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ blog_list.number }} of {{ blog_list.paginator.num_pages }}
+            </span>
+
+            {% if blog_list.has_next %}
+                <a href="?page={{ blog_list.next_page_number }}"> > </a>
+            {% endif %}
+        </span>
+    </div>
+{% endautoescape %}
+
+{% endblock %}
