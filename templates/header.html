@@ -5,9 +5,9 @@
 
     {% load staticfiles %}
 
-    <link rel="stylesheet" href="{% static "all/bootstrap.min.css" %}" type="text/css" />
-    <link rel="stylesheet" href="{% static "all/style.css" %}" type="text/css" />
-    <script type="text/javascript" href ="{% static "all/jquery.js" %}"> </script>
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" type="text/css" />
+    <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" />
+ 
 
 </head>
 <body>
@@ -18,22 +18,8 @@
             <p class="subhead"> Computer Science, Software Development</p>
             </a>
         </div>
-        {% for page in menu_list %}
-            <a class ="blog-nav-item" href="/{{ page.title.lower }}">{{page.title}}</a>
-        {% endfor %}
-        {%  if has_blog_list %}
-            <a class="blog-nav-item" href ="/blog"> Blog </a>
-        {%  endif %}
-        {%  if has_portfolio_list %}
-            <a class="blog-nav-item" href ="/portfolio/"> Portfolio </a>
-        {%  endif %}
     </nav>
 </div>
-<div class="loc">
-    <!-- model view. breadcrumb/to/page-->
-    <!-- eg: wwwidmer.com/portfolio/school/OS or blog/articleName or blog/archive/2014 etc etc etc -->
-</div>
-
 <div class="container">
     <div class="content">
         {% block page %}
@@ -41,8 +27,7 @@
     </div>
 </div>
 
-<footer class="blog-footer">
-    <p>2015 | William Widmer | Website made in NYC | All content by William Widmer unless noted</p>
-</footer>
-
 </body>
+<script src ="{% static "js/boostrap.js" %}"> </script>
+<script src="{% static "js/script.js" %}"> </script>
+</html>

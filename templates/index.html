@@ -4,29 +4,34 @@
 {% block page %}
 <div class ="container" style="width:90%; margin:10px;">
 
-    {%  if main %}
-        <div class="col-md-4">
-            {%  for m in main %}
-                <p>
-                    {{ m.descript }}
-                </p>
-                <p>
-                    {{ m.content|safe }}
-                </p>
-            {%  endfor %}
-            </div>
-    {%  else %}
-        <p> You need a main page set.</p>
-    {%  endif %}
-    {% if img %}
-        <div class="col-md-5">
-            {% if img  %}
-                <img class="home-dex" src="{% static img.image %}" alt="{{ img.image }} " title="{{ img.text }}"/>
-            {%  endif %}
-        </div>
-    {% else %}
-        <p> You need index images.</p>
-    {% endif %}
+  <div class="col-md-4 col-sm-4 col-lg-4">
+    <p> {{ intro }} </p>
+    <img src="" alt="me rn">
+    <ul class="list-group">
+      {% for link in links %}
+      <li class="list-group-item" data-url="{{ link.url }}">
+	<span class="badge"> {{ link.name }}</span>
+	<img src="{{ link.glyph }}" alt="{{ link.name }}"></img>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="col-md-4 col-sm-4 col-lg-4">
+    <p> Experience list</p>
+    <ul>
+    {% for exp in experience %}
+    <li>  {{ exp }} </li>
+    {% endfor %}
+    </ul>
+  </div>
+  <div class="col-md-4 col-sm-4 col-lg-4">
+    <p> Technical skills </p>
+    <ul>
+      {% for tech in technicals %}
+      <li> {{ tech }} </li>
+      {% endfor %}
+    </ul>
+  </div>
 
 </div>
 
