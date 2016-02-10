@@ -1,11 +1,12 @@
 #bin/bash
-# CUSTOM
 
 cd wwwidmer
 git merge origin/master
 
+cp static/ ../
+
 cd ../
-./manage.py makemigrations
-./manage.py migrate
+python2.7 manage.py makemigrations
+python2.7 manage.py migrate
 
 ../apache2/bin/restart
