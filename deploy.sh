@@ -1,12 +1,15 @@
 #bin/bash
 
-cd wwwidmer
+# TODO CHECK WERE IN THE RIGHT DIRECTORY
+# if not cd wwwidmer			
 git merge origin/master
 
-cp static/ ../
+rm -r ../static/
+cp -r static/ ../
 
 cd ../
 python2.7 manage.py makemigrations
 python2.7 manage.py migrate
+python2.7 manage.py collectstatic
 
 ../apache2/bin/restart
