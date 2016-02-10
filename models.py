@@ -5,7 +5,7 @@ from django.db import models
 
 class TechnicalSkill(models.Model):
     name = models.CharField(max_length=100, primary_key=True)
-    stars = models.DecimalField(max_digits=2, decimal_places=1)
+    stars = models.IntegerField()
 
 
 class Experience(models.Model):

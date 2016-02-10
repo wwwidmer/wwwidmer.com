@@ -1,12 +1,15 @@
 {% extends "header.html" %}
 {% load staticfiles %}
+{% load string_multiply %}
 
 {% block page %}
 <div class ="container" style="width:90%; margin:10px;">
 
   <div class="col-md-4 col-sm-4 col-lg-4">
-    <p> {{ intro }} </p>
-    <img src="" alt="me rn">
+    {% for i in intro %}
+    <p> {{ i }} </p>
+    {% endfor %}
+    <img src="" alt="This should be a picture of my head"/>
     <ul class="list-group">
       {% for link in links %}
       <li class="list-group-item" data-url="{{ link.url }}">
@@ -17,20 +20,37 @@
     </ul>
   </div>
   <div class="col-md-4 col-sm-4 col-lg-4">
-    <p> Experience list</p>
-    <ul>
+    <p> Experience: </p>
+    <ul class="list-group">
     {% for exp in experience %}
-    <li>  {{ exp }} </li>
+    <li class="list-group-item"> 
+      <span class="experience"> {{ exp.title }} at {{ exp.company }}</span> 
+      <div class="hidden">
+	<ul>
+	  <li> {{ exp.company }} </li>
+	  <li> <span> {{ exp.title }} </span> <span> {{ exp.start_date }} - {% if exp.end_date %} {{ exp.end_date }} {% else %} present {% endif %}  </span></li>
+	  <li> {{ exp.description }} </li>
+	  <li> {{ exp.achievements }} </li>
+	</ul>
+      </div>
+    </li>
     {% endfor %}
+    <li class="list-group-item"> <a href="">Resume</a> </li>
     </ul>
   </div>
   <div class="col-md-4 col-sm-4 col-lg-4">
-    <p> Technical skills </p>
-    <ul>
+    <p> Technical Skills </p>
+    <ul class="list-group">
       {% for tech in technicals %}
-      <li> {{ tech }} </li>
+      <li class="list-group-item tech"> 
+	<span> {{ tech.name }} </span> 
+	<span class="hidden stars"> {% filter multiply:tech.stars %}  &#9733; {% endfilter %}</span>
+      </li>
       {% endfor %}
     </ul>
+  </div>
+  <div class="container-fluid">
+    <img style="max-width:100%;" src="http://40.media.tumblr.com/e08219a10054a5b3ecd23ac0dd5ab19f/tumblr_nf0iayP7lE1qkahxao1_1280.png" alt="me rn">
   </div>
 
 </div>

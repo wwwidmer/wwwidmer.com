@@ -1,6 +1,8 @@
 from django.shortcuts import render_to_response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+import os
+
 from wwwidmer.models import TechnicalSkill, Experience
 
 import random
@@ -14,10 +16,10 @@ class Link:
 
 
 def index(request):
-    intro = 'Software developer in New York, NY USA.'
+    intro = read_intro()
     link_list = links()
-    experience = TechnicalSkill.objects.all()
-    technicals = Experience.objects.all()
+    experience = Experience.objects.all().order_by('start_date')
+    technicals = TechnicalSkill.objects.all().order_by('-stars')
     context = {'intro': intro, 'links': link_list, 'experience': experience, 'technicals':technicals}
     return render_to_response('index.html', context)
 
@@ -26,3 +28,11 @@ def links():
     github = Link('github', 'https://www.github.com/wwwidmer', '/static/GitHub-Mark-32px.png')
     linkedin = Link('linkedin', 'https://linkedin url', '/static/In-2C-34px-TM.png')
     return [github, linkedin]
+
+
+def read_intro():
+    intro = os.path.join(os.path.dirname(__file__), 'intro.txt')
+    with open(intro, 'rw+') as intro_text:
+        intro_text.seek(0)
+        text = intro_text.readlines()  # This will be a list so we can format it later.
+        return text
