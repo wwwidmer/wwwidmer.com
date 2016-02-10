@@ -12,7 +12,7 @@
     <img src="" alt="This should be a picture of my head"/>
     <ul class="list-group">
       {% for link in links %}
-      <li class="list-group-item" data-url="{{ link.url }}">
+      <li class="link list-group-item" data-url="{{ link.url }}">
 	<span class="badge"> {{ link.name }}</span>
 	<img src="{{ link.glyph }}" alt="{{ link.name }}"></img>
       </li>
@@ -23,9 +23,9 @@
     <p> Experience: </p>
     <ul class="list-group">
     {% for exp in experience %}
-    <li class="list-group-item"> 
-      <span class="experience"> {{ exp.title }} at {{ exp.company }}</span> 
-      <div class="hidden">
+    <li class="list-group-item experience"> 
+      <span> {{ exp.title }} at {{ exp.company }}</span> 
+      <div class="show-more hidden">
 	<ul>
 	  <li> {{ exp.company }} </li>
 	  <li> <span> {{ exp.title }} </span> <span> {{ exp.start_date }} - {% if exp.end_date %} {{ exp.end_date }} {% else %} present {% endif %}  </span></li>

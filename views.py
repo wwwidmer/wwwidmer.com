@@ -25,8 +25,9 @@ def index(request):
 
 
 def links():
+    # I don't mind hardcoding this stuff in. Alternatively this would be another table/model.
     github = Link('github', 'https://www.github.com/wwwidmer', '/static/GitHub-Mark-32px.png')
-    linkedin = Link('linkedin', 'https://linkedin url', '/static/In-2C-34px-TM.png')
+    linkedin = Link('linkedin', 'https://www.linkedin.com/in/williamjohnwidmer', '/static/In-2C-34px-TM.png')
     return [github, linkedin]
 
 

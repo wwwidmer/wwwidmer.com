@@ -28,7 +28,33 @@
 </div>
 
 </body>
-<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-<script src="{% static "js/bootstrap.js" %}"> </script>
-<script src="{% static "js/index_magic.js" %}"> </script>
+
+<script>
+    // Load javascript async so slow connections can see this page.
+    // This is just me being fancy.
+    var scripts = [
+        "https://code.jquery.com/jquery-2.2.0.min.js",
+        "{% static "js/bootstrap.js" %}",
+        "{% static "js/index_magic.js" %}"
+    ];
+    var doc_head = document.head;
+
+    function async_scripts(src, jquery){
+        jquery = jquery || false;
+        var src = src; 
+        var script = document.createElement('script');
+        script.async = 1;
+        script.src = src;
+        if (jquery){
+            script.onload = function(){
+                for(var i = 1; i < scripts.length; i++){
+  	            async_scripts(scripts[i]);
+                }
+            }
+	}
+        doc_head.appendChild(script);
+    }
+
+    async_scripts(scripts[0], true);
+</script>
 </html>
