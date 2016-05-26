@@ -3,12 +3,7 @@ $(document).ready(function(){
     // No UI to show this off - Only let the curious see my confidence.
     $('.tech').on('mouseenter mouseout', function(e){
         var $stars = $(this).find('.stars');
-        $stars.toggleClass('hidden');
-        setTimeout(function(){
-          $stars.fadeOut(400, function(){
-              $stars.toggleClass();
-          })
-        }, 5000)
+        $stars.stop().toggle();
     });
 
   // Easter egg if clicked enough.
