@@ -1,9 +1,19 @@
 $(document).ready(function(){
     // Initially hide stars in the technical skills
     // No UI to show this off - Only let the curious see my confidence.
-    $('.tech').on('mouseenter mouseout', function(e){
-        var $stars = $(this).find('.stars');
-        $stars.stop().toggle();
+    $('.tech').on({
+        'mouseenter': function(e){
+          var $stars = $(this).find('.stars');
+          $stars.addClass('hidden');
+        },
+        'mouseleave': function(e){
+          var leaveInterval = setInterval(function(){
+            if (!$stars.hasClass('hidden')){
+                $stars.removeClass('hidden');
+                clearInterval(leaveInterval);
+            }
+          }, 100);
+        }
     });
 
   // Easter egg if clicked enough.
