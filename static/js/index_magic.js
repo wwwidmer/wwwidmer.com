@@ -2,7 +2,7 @@ $(document).ready(function(){
     // Initially hide stars in the technical skills
     // No UI to show this off - Only let the curious see my confidence.
     $('.tech').on('mouseenter mouseout', function(e){
-        var $stars = that.find('.stars');
+        var $stars = $(this).find('.stars');
         $stars.toggleClass('hidden');
         setTimeout(function(){
           $stars.fadeOut(400, function(){
