@@ -10,8 +10,10 @@ $(document).ready(function(){
         $('.tech').each(function(){
             var $stars = $(this).find('.stars');
             if (!$stars.hasClass('hidden')){
-                $stars.fadeOut(500);
-                $stars.removeClass('hidden');
+                $stars.fadeOut(500, function(){
+                    $stars.toggleClass('hidden');
+                    $stars.css('display', 'block');
+                });
             }
         })
     }, 2000)
