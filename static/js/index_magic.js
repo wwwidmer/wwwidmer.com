@@ -7,6 +7,7 @@ $(document).ready(function(){
           $stars.addClass('hidden');
         },
         'mouseleave': function(e){
+          var $stars = $(this).find('.stars');
           var leaveInterval = setInterval(function(){
             if (!$stars.hasClass('hidden')){
                 $stars.removeClass('hidden');
