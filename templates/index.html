@@ -25,8 +25,8 @@
     <p> Experience: </p>
     <ul class="list-group">
     {% for exp in experience %}
-    <li class="list-group-item experience"> 
-      <span> {{ exp.title }} at {{ exp.company }}</span> 
+    <li class="list-group-item experience">
+      <span> {{ exp.title }} at {{ exp.company }}</span>
       <div class="show-more hidden">
 	<ul>
 	  <li> {{ exp.company }} </li>
@@ -44,8 +44,8 @@
     <p> Technical Skills </p>
     <ul class="list-group">
       {% for tech in technicals %}
-      <li class="list-group-item tech"> 
-	<span> {{ tech.name }} </span> 
+      <li class="list-group-item tech">
+	<span> {{ tech.name }} </span>
 	<span class="hidden stars"> {% filter multiply:tech.stars %}  &#9733; {% endfilter %}</span>
       </li>
       {% endfor %}
