@@ -28,11 +28,11 @@
     <li class="list-group-item experience">
       <span> {{ exp.title }} at {{ exp.company }}</span>
       <div class="show-more hidden">
-	<ul>
+	       <ul>
 	  <li> {{ exp.company }} </li>
 	  <li> <span> {{ exp.title }} </span> <span> {{ exp.start_date }} - {% if exp.end_date %} {{ exp.end_date }} {% else %} present {% endif %}  </span></li>
 	  <li> {{ exp.description }} </li>
-	  <li> {{ exp.achievements }} </li>
+	  <!--<li> {{ exp.achievements }} </li>-->
 	</ul>
       </div>
     </li>
