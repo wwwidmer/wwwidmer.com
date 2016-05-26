@@ -9,12 +9,12 @@ $(document).ready(function(){
     setInterval(function(){
         $('.tech').each(function(){
             var $stars = $(this).find('.stars');
-            if ($stars.hasClass('hidden')){
+            if (!$stars.hasClass('hidden')){
                 $stars.fadeOut(500);
                 $stars.removeClass('hidden');
             }
         })
-    }), 2000)
+    }, 2000)
 
 
     // Easter egg if clicked enough.
