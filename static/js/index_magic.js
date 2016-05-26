@@ -6,14 +6,14 @@ $(document).ready(function(){
 	     $(this).find('.stars').toggleClass('hidden');
     });
 
-    setInterval(function(
+    setInterval(function{
         $('.tech').each(function(){
             if (!$(this).hasClass('hidden')){
                 $(this).fadeOut(500);
                 $(this).removeClass('hidden');
             }
         })
-    ), 2000)
+    }), 2000)
 
 
     // Easter egg if clicked enough.
