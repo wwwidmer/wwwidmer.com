@@ -11,7 +11,7 @@ class TechnicalSkill(models.Model):
 class Experience(models.Model):
     company = models.CharField(max_length=100, primary_key=True)
     start_date = models.DateField()
-    end_date = models.DateField()
+    end_date = models.DateField(blank=True)
     title = models.CharField(max_length=100)
-    description = models.CharField(max_length=100) 
+    description = models.CharField(max_length=100)
     achievements = ''
