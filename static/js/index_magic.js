@@ -8,9 +8,10 @@ $(document).ready(function(){
 
     setInterval(function(){
         $('.tech').each(function(){
-            if (!$(this).hasClass('hidden')){
-                $(this).fadeOut(500);
-                $(this).removeClass('hidden');
+            var $stars = $(this).find('.stars');
+            if ($stars.hasClass('hidden')){
+                $stars.fadeOut(500);
+                $stars.removeClass('hidden');
             }
         })
     }), 2000)
